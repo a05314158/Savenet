@@ -89,12 +89,12 @@ Savenet будет иметь модульную архитектуру, поз�
 
 ```mermaid
 graph TD
-    %% 1. Определения стилей для чистой визуализации
-    classDef localComponent fill:#E0F7FA, stroke:#00BCD4, stroke-width:2px, color:#01579B, rx:8px, ry:8px;     %% Голубой/Тифани для локальных компонентов
-    classDef userAction fill:#BBDEFB, stroke:#42A5F5, stroke-width:2px, color:#1565C0, rx:8px, ry:8px;          %% Светло-синий для действий пользователя
-    classDef storage fill:#FFF8E1, stroke:#FFB300, stroke-width:2px, color:#E65100, rx:8px, ry:8px;             %% Желтый/Янтарный для хранения данных
-    classDef aiModule fill:#F3E5F5, stroke:#9C27B0, stroke-width:2px, color:#4A148C, rx:8px, ry:8px;            %% Фиолетовый/Лиловый для AI-модулей
-    classDef cloudService fill:#ECEFF1, stroke:#607D8B, stroke-width:2px, color:#455A64, rx:8px, ry:8px;         %% Серый для опциональных облачных сервисов
+    %% 1. Определения стилей
+    classDef localComponent fill:#E0F7FA, stroke:#00BCD4, stroke-width:2px, color:#01579B, rx:8px, ry:8px;
+    classDef userAction fill:#BBDEFB, stroke:#42A5F5, stroke-width:2px, color:#1565C0, rx:8px, ry:8px;
+    classDef storage fill:#FFF8E1, stroke:#FFB300, stroke-width:2px, color:#E65100, rx:8px, ry:8px;
+    classDef aiModule fill:#F3E5F5, stroke:#9C27B0, stroke-width:2px, color:#4A148C, rx:8px, ry:8px;
+    classDef cloudService fill:#ECEFF1, stroke:#607D8B, stroke-width:2px, color:#455A64, rx:8px, ry:8px;
 
     subgraph "Устройство Пользователя (Локальный, Приватный Поток)"
         A[<b>Действия Пользователя</b>]:::userAction --> B(<b>Модуль Сбора Данных</b>):::localComponent
@@ -114,19 +114,23 @@ graph TD
         K[<b>Внешние AI API:</b> GPT, Gemini, Claude]::cloudService
         L[<b>Облачное Хранилище Настроек (Синхронизация)</b>]::cloudService
 
-        E -- "Анонимизированные/Агрегированные Данные" --o J
-        J -- "Обновления Модели" --o E
-        H -- "Запросы к Продвинутым API" -.- K
-        K -- "Ответы NLP" -.- F
-        H -- "Синхронизация Настроек/Списков" -.- L
-        L -- "Получение Настроек" -.- G
+        E -- "Анонимизированные/Агрегированные Данные" --> J
+        J -- "Обновления Модели" --> E
+        H -- "Запросы к Продвинутым API" --> K
+        K -- "Ответы NLP" --> F
+        H -- "Синхронизация Настроек/Списков" --> L
+        L -- "Получение Настроек" --> G
     end
 
-    %% Определение стилей линий для визуализации потоков
-    linkStyle default stroke:#00BCD4, stroke-width:2px;           %% Основной поток данных (Локальный)
-    linkStyle 11 stroke:#9C27B0, stroke-width:2px, stroke-dasharray: 5 5; %% Опциональный поток (Облако - пунктир)
-    linkStyle 12 stroke:#9C27B0, stroke-width:2px, stroke-dasharray: 5 5;
-    linkStyle 13 stroke:#9C27B0, stroke-width:2px, stroke-dasharray: 5 5;
-    linkStyle 14 stroke:#9C27B0, stroke-width:2px, stroke-dasharray: 5 5;
-    linkStyle 15 stroke:#9C27B0, stroke-width:2px, stroke-dasharray: 5 5;
-    linkStyle 16 stroke:#9C27B0, stroke-width:2px, stroke-dasharray: 5 5;
+    %% Определение стилей линий
+    linkStyle default stroke:#00BCD4, stroke-width:2px;
+    
+    %% Начиная с индекса 10 (E-->J) применяем стиль пунктирной линии для облачных потоков
+    %% E --> J (Index 10)
+    %% J --> E (Index 11)
+    %% H --> K (Index 12)
+    %% K --> F (Index 13)
+    %% H --> L (Index 14)
+    %% L --> G (Index 15)
+    
+    linkStyle 10,11,12,13,14,15 stroke:#9C27B0, stroke-width:2px, stroke-dasharray: 5 5;
