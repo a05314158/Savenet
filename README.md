@@ -111,15 +111,42 @@ graph TD
         L --> G
     end
 
-    style A fill:#D0E0FF,stroke:#333,stroke-width:2px
-    style B fill:#C0D0FF,stroke:#333,stroke-width:2px
-    style C fill:#E0F0FF,stroke:#333,stroke-width:2px
-    style D fill:#C0E0FF,stroke:#333,stroke-width:2px
-    style E fill:#A0C0FF,stroke:#333,stroke-width:2px
-    style F fill:#B0D0FF,stroke:#333,stroke-width:2px
-    style G fill:#E0E0FF,stroke:#333,stroke-width:2px
-    style H fill:#D0E0FF,stroke:#333,stroke-width:2px
-    style I fill:#C0D0FF,stroke:#333,stroke-width:2px
-    style J fill:#FFE0B0,stroke:#333,stroke-width:2px
-    style K fill:#FFD090,stroke:#333,stroke-width:2px
-    style L fill:#FFE0C0,stroke:#333,stroke-width:2px
+    %% Новые стили для более приятного вида
+    style A fill:#E8F0FE, stroke:#6A8ACF, stroke-width:2px, color:#333
+    style B fill:#D9E4FA, stroke:#5C7AAD, stroke-width:2px, color:#333
+    style C fill:#C9DAF8, stroke:#4C6990, stroke-width:2px, color:#333
+    style D fill:#B9CFEE, stroke:#3C5873, stroke-width:2px, color:#333
+    style E fill:#A9C4E4, stroke:#2C475A, stroke-width:2px, color:#333
+    style F fill:#99B9DA, stroke:#1C3641, stroke-width:2px, color:#333
+    style G fill:#89AECF, stroke:#0C252D, stroke-width:2px, color:#333
+    style H fill:#E8F0FE, stroke:#6A8ACF, stroke-width:2px, color:#333
+    style I fill:#D9E4FA, stroke:#5C7AAD, stroke-width:2px, color:#333
+
+    style J fill:#FDF3D7, stroke:#D4AC0D, stroke-width:2px, color:#333
+    style K fill:#FAE6C1, stroke:#B88B00, stroke-width:2px, color:#333
+    style L fill:#F2D8AA, stroke:#9C6E00, stroke-width:2px, color:#333
+
+    linkStyle 0 stroke:#6A8ACF,stroke-width:2px,fill:none;
+    linkStyle 1 stroke:#5C7AAD,stroke-width:2px,fill:none;
+    linkStyle 2 stroke:#4C6990,stroke-width:2px,fill:none;
+    linkStyle 3 stroke:#3C5873,stroke-width:2px,fill:none;
+    linkStyle 4 stroke:#2C475A,stroke-width:2px,fill:none;
+    linkStyle 5 stroke:#1C3641,stroke-width:2px,fill:none;
+    linkStyle 6 stroke:#6A8ACF,stroke-width:2px,fill:none;
+    linkStyle 7 stroke:#5C7AAD,stroke-width:2px,fill:none;
+    linkStyle 8 stroke:#D4AC0D,stroke-width:2px,fill:none;
+    linkStyle 9 stroke:#D4AC0D,stroke-width:2px,fill:none;
+    linkStyle 10 stroke:#B88B00,stroke-width:2px,fill:none;
+    linkStyle 11 stroke:#B88B00,stroke-width:2px,fill:none;
+    linkStyle 12 stroke:#9C6E00,stroke-width:2px,fill:none;
+    linkStyle 13 stroke:#9C6E00,stroke-width:2px,fill:none;
+
+    classDef user_device fill:#E8F0FE, stroke:#6A8ACF, stroke-width:2px, color:#333;
+    classDef cloud_service fill:#FDF3D7, stroke:#D4AC0D, stroke-width:2px, color:#333;
+
+    class A,H user_device;
+    class B,D,I user_device;
+    class C,G user_device;
+    class E,F user_device;
+
+    class J,K,L cloud_service;
