@@ -89,63 +89,44 @@ Savenet будет иметь модульную архитектуру, поз�
 
 ```mermaid
 graph TD
-    subgraph "Устройство Пользователя"
-        A[<b>Действия Пользователя:</b> Открытие вкладок, использование приложений, переключения] --> B(<b>Модуль Сбора Данных:</b> Расширение/Десктопное приложение)
-        B --> C{<b>Локальное Хранилище Данных:</b> SQLite/chrome.storage}
-        C --> D[<b>Модуль Предварительной Обработки Данных</b>]
-        D --> E[<b>Модуль AI-Аналитики & Прогнозирования</b> - Python/ML]
-        E --> F[<b>Модуль Генерации Рекомендаций & Ответов AI-Коуча</b>]
-        F --> G[<b>Пользовательский Интерфейс Savenet:</b> Дашборд, Отчеты, AI-Коуч]
-        G --> H{<b>Действия Пользователя:</b> Настройка правил, Запросы к AI-Коучу, Обратная связь}
+    %% 1. Определения стилей для чистой визуализации
+    classDef localComponent fill:#E0F7FA, stroke:#00BCD4, stroke-width:2px, color:#01579B, rx:8px, ry:8px;     %% Голубой/Тифани для локальных компонентов
+    classDef userAction fill:#BBDEFB, stroke:#42A5F5, stroke-width:2px, color:#1565C0, rx:8px, ry:8px;          %% Светло-синий для действий пользователя
+    classDef storage fill:#FFF8E1, stroke:#FFB300, stroke-width:2px, color:#E65100, rx:8px, ry:8px;             %% Желтый/Янтарный для хранения данных
+    classDef aiModule fill:#F3E5F5, stroke:#9C27B0, stroke-width:2px, color:#4A148C, rx:8px, ry:8px;            %% Фиолетовый/Лиловый для AI-модулей
+    classDef cloudService fill:#ECEFF1, stroke:#607D8B, stroke-width:2px, color:#455A64, rx:8px, ry:8px;         %% Серый для опциональных облачных сервисов
+
+    subgraph "Устройство Пользователя (Локальный, Приватный Поток)"
+        A[<b>Действия Пользователя</b>]:::userAction --> B(<b>Модуль Сбора Данных</b>):::localComponent
+        B --> C{<b>Локальное Хранилище:</b> SQLite/Storage}:::storage
+        C --> D[<b>Модуль Предобработки</b>]::localComponent
+        D --> E[<b>AI-Аналитика & Прогнозирование</b>]::aiModule
+        E --> F[<b>Генерация Рекомендаций & AI-Коуч</b>]::aiModule
+        F --> G[<b>Пользовательский Интерфейс:</b> Дашборд, Отчеты, Коуч]::localComponent
+        G --> H{<b>Обратная Связь Пользователя / Настройка Правил</b>}:::userAction
         H --> B
-        G --> I(<b>Модуль Блокировки и Уведомлений:</b> Web APIs/Нативные API ОС)
+        G --> I(<b>Модуль Блокировки и Уведомлений</b>):::localComponent
         I --> A
     end
 
-    subgraph "Облачные Сервисы (Опционально, с Согласия Пользователя)"
-        J[<b>Облачное Обучение Общих Моделей AI</b>]
-        K[<b>Внешние AI API:</b> OpenAI GPT, Google Gemini]
-        L[<b>Облачное Хранилище Настроек:</b> PostgreSQL/MongoDB]
+    subgraph "Облачные Сервисы (Опционально)"
+        J[<b>Облачное Обучение Общих Моделей AI (Агрегированные данные)</b>]::cloudService
+        K[<b>Внешние AI API:</b> GPT, Gemini, Claude]::cloudService
+        L[<b>Облачное Хранилище Настроек (Синхронизация)</b>]::cloudService
 
-        E -- "<b>Анонимизированные/Агрегированные Данные</b>" --> J
-        J --> E
-        H -- "<b>Синхронизация Настроек/Запросы к Продвинутым API</b>" --> K
-        K --> F
-        H -- "<b>Синхронизация Настроек/Списков</b>" --> L
-        L --> G
+        E -- "Анонимизированные/Агрегированные Данные" --o J
+        J -- "Обновления Модели" --o E
+        H -- "Запросы к Продвинутым API" -.- K
+        K -- "Ответы NLP" -.- F
+        H -- "Синхронизация Настроек/Списков" -.- L
+        L -- "Получение Настроек" -.- G
     end
 
-    %% "Конфетный" стиль v4 (без стилизации подграфов)
-    classDef userDeviceNodes fill:#F0F8FF, stroke:#4A90E2, stroke-width:2px, color:#212121, rx:8px, ry:8px;
-    classDef aiModules fill:#E0F7FA, stroke:#00BCD4, stroke-width:2px, color:#212121, rx:8px, ry:8px;
-    classDef storageNodes fill:#FFFDE7, stroke:#FFC107, stroke-width:2px, color:#212121, rx:8px, ry:8px;
-    classDef cloudServiceNodes fill:#F3E5F5, stroke:#9C27B0, stroke-width:2px, color:#212121, rx:8px, ry:8px;
-
-    class A,H userDeviceNodes;
-    class B,D,I userDeviceNodes;
-    class C storageNodes;
-    class E,F aiModules;
-    class G userDeviceNodes;
-
-    class J,K,L cloudServiceNodes;
-
-    linkStyle default stroke:#607D8B, stroke-width:2px;
-
-    %% Отдельные стили для линий
-    linkStyle 0 stroke:#4A90E2, stroke-width:2px;
-    linkStyle 1 stroke:#4A90E2, stroke-width:2px;
-    linkStyle 2 stroke:#4A90E2, stroke-width:2px;
-    linkStyle 3 stroke:#00BCD4, stroke-width:2px;
-    linkStyle 4 stroke:#00BCD4, stroke-width:2px;
-    linkStyle 5 stroke:#4A90E2, stroke-width:2px;
-    linkStyle 6 stroke:#4A90E2, stroke-width:2px;
-    linkStyle 7 stroke:#4A90E2, stroke-width:2px;
-    linkStyle 8 stroke:#4A90E2, stroke-width:2px;
-    linkStyle 9 stroke:#4A90E2, stroke-width:2px;
-
-    linkStyle 10 stroke:#9C27B0, stroke-width:2px;
-    linkStyle 11 stroke:#9C27B0, stroke-width:2px;
-    linkStyle 12 stroke:#9C27B0, stroke-width:2px;
-    linkStyle 13 stroke:#9C27B0, stroke-width:2px;
-    linkStyle 14 stroke:#9C27B0, stroke-width:2px;
-    linkStyle 15 stroke:#9C27B0, stroke-width:2px;
+    %% Определение стилей линий для визуализации потоков
+    linkStyle default stroke:#00BCD4, stroke-width:2px;           %% Основной поток данных (Локальный)
+    linkStyle 11 stroke:#9C27B0, stroke-width:2px, stroke-dasharray: 5 5; %% Опциональный поток (Облако - пунктир)
+    linkStyle 12 stroke:#9C27B0, stroke-width:2px, stroke-dasharray: 5 5;
+    linkStyle 13 stroke:#9C27B0, stroke-width:2px, stroke-dasharray: 5 5;
+    linkStyle 14 stroke:#9C27B0, stroke-width:2px, stroke-dasharray: 5 5;
+    linkStyle 15 stroke:#9C27B0, stroke-width:2px, stroke-dasharray: 5 5;
+    linkStyle 16 stroke:#9C27B0, stroke-width:2px, stroke-dasharray: 5 5;
