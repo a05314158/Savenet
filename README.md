@@ -111,42 +111,37 @@ graph TD
         L --> G
     end
 
-    %% Новые стили для более приятного вида
-    style A fill:#E8F0FE, stroke:#6A8ACF, stroke-width:2px, color:#333
-    style B fill:#D9E4FA, stroke:#5C7AAD, stroke-width:2px, color:#333
-    style C fill:#C9DAF8, stroke:#4C6990, stroke-width:2px, color:#333
-    style D fill:#B9CFEE, stroke:#3C5873, stroke-width:2px, color:#333
-    style E fill:#A9C4E4, stroke:#2C475A, stroke-width:2px, color:#333
-    style F fill:#99B9DA, stroke:#1C3641, stroke-width:2px, color:#333
-    style G fill:#89AECF, stroke:#0C252D, stroke-width:2px, color:#333
-    style H fill:#E8F0FE, stroke:#6A8ACF, stroke-width:2px, color:#333
-    style I fill:#D9E4FA, stroke:#5C7AAD, stroke-width:2px, color:#333
+    %% "Конфетный" стиль
+    classDef userDeviceNodes fill:#F0F8FF, stroke:#4A90E2, stroke-width:2px, color:#333333, rx:5px, ry:5px, stroke-dasharray: none;
+    classDef aiModules fill:#E0F7FA, stroke:#00BCD4, stroke-width:2px, color:#212121, rx:5px, ry:5px, stroke-dasharray: none;
+    classDef storageNodes fill:#FFFDE7, stroke:#FFC107, stroke-width:2px, color:#333333, rx:5px, ry:5px, stroke-dasharray: none;
+    classDef cloudServiceNodes fill:#F3E5F5, stroke:#9C27B0, stroke-width:2px, color:#333333, rx:5px, ry:5px, stroke-dasharray: none;
 
-    style J fill:#FDF3D7, stroke:#D4AC0D, stroke-width:2px, color:#333
-    style K fill:#FAE6C1, stroke:#B88B00, stroke-width:2px, color:#333
-    style L fill:#F2D8AA, stroke:#9C6E00, stroke-width:2px, color:#333
+    class A,H userDeviceNodes;
+    class B,D,I userDeviceNodes;
+    class C storageNodes;
+    class E,F aiModules;
+    class G userDeviceNodes;
 
-    linkStyle 0 stroke:#6A8ACF,stroke-width:2px,fill:none;
-    linkStyle 1 stroke:#5C7AAD,stroke-width:2px,fill:none;
-    linkStyle 2 stroke:#4C6990,stroke-width:2px,fill:none;
-    linkStyle 3 stroke:#3C5873,stroke-width:2px,fill:none;
-    linkStyle 4 stroke:#2C475A,stroke-width:2px,fill:none;
-    linkStyle 5 stroke:#1C3641,stroke-width:2px,fill:none;
-    linkStyle 6 stroke:#6A8ACF,stroke-width:2px,fill:none;
-    linkStyle 7 stroke:#5C7AAD,stroke-width:2px,fill:none;
-    linkStyle 8 stroke:#D4AC0D,stroke-width:2px,fill:none;
-    linkStyle 9 stroke:#D4AC0D,stroke-width:2px,fill:none;
-    linkStyle 10 stroke:#B88B00,stroke-width:2px,fill:none;
-    linkStyle 11 stroke:#B88B00,stroke-width:2px,fill:none;
-    linkStyle 12 stroke:#9C6E00,stroke-width:2px,fill:none;
-    linkStyle 13 stroke:#9C6E00,stroke-width:2px,fill:none;
+    class J,K,L cloudServiceNodes;
 
-    classDef user_device fill:#E8F0FE, stroke:#6A8ACF, stroke-width:2px, color:#333;
-    classDef cloud_service fill:#FDF3D7, stroke:#D4AC0D, stroke-width:2px, color:#333;
+    linkStyle default stroke:#607D8B, stroke-width:2px;
 
-    class A,H user_device;
-    class B,D,I user_device;
-    class C,G user_device;
-    class E,F user_device;
+    %% Отдельные стили для линий, чтобы добавить им цвета
+    linkStyle 0 stroke:#4A90E2, stroke-width:2px; % A --> B
+    linkStyle 1 stroke:#4A90E2, stroke-width:2px; % B --> C
+    linkStyle 2 stroke:#4A90E2, stroke-width:2px; % C --> D
+    linkStyle 3 stroke:#00BCD4, stroke-width:2px; % D --> E (к AI)
+    linkStyle 4 stroke:#00BCD4, stroke-width:2px; % E --> F (от AI)
+    linkStyle 5 stroke:#4A90E2, stroke-width:2px; % F --> G
+    linkStyle 6 stroke:#4A90E2, stroke-width:2px; % G --> H
+    linkStyle 7 stroke:#4A90E2, stroke-width:2px; % H --> B
+    linkStyle 8 stroke:#4A90E2, stroke-width:2px; % G --> I
+    linkStyle 9 stroke:#4A90E2, stroke-width:2px; % I --> A
 
-    class J,K,L cloud_service;
+    linkStyle 10 stroke:#9C27B0, stroke-width:2px; % E -- "Анонимизированные/Агрегированные Данные" --> J
+    linkStyle 11 stroke:#9C27B0, stroke-width:2px; % J --> E
+    linkStyle 12 stroke:#9C27B0, stroke-width:2px; % H -- "Синхронизация Настроек/Запросы к Продвинутым API" --> K
+    linkStyle 13 stroke:#9C27B0, stroke-width:2px; % K --> F
+    linkStyle 14 stroke:#9C27B0, stroke-width:2px; % H -- "Синхронизация Настроек/Списков" --> L
+    linkStyle 15 stroke:#9C27B0, stroke-width:2px; % L --> G
