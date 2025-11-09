@@ -128,20 +128,19 @@ graph TD
     linkStyle default stroke:#607D8B, stroke-width:2px;
 
     %% Отдельные стили для линий, чтобы добавить им цвета
-    linkStyle 0 stroke:#4A90E2, stroke-width:2px; % A --> B
-    linkStyle 1 stroke:#4A90E2, stroke-width:2px; % B --> C
-    linkStyle 2 stroke:#4A90E2, stroke-width:2px; % C --> D
-    linkStyle 3 stroke:#00BCD4, stroke-width:2px; % D --> E (к AI)
-    linkStyle 4 stroke:#00BCD4, stroke-width:2px; % E --> F (от AI)
-    linkStyle 5 stroke:#4A90E2, stroke-width:2px; % F --> G
-    linkStyle 6 stroke:#4A90E2, stroke-width:2px; % G --> H
-    linkStyle 7 stroke:#4A90E2, stroke-width:2px; % H --> B
-    linkStyle 8 stroke:#4A90E2, stroke-width:2px; % G --> I
-    linkStyle 9 stroke:#4A90E2, stroke-width:2px; % I --> A
-
-    linkStyle 10 stroke:#9C27B0, stroke-width:2px; % E -- "Анонимизированные/Агрегированные Данные" --> J
-    linkStyle 11 stroke:#9C27B0, stroke-width:2px; % J --> E
-    linkStyle 12 stroke:#9C27B0, stroke-width:2px; % H -- "Синхронизация Настроек/Запросы к Продвинутым API" --> K
-    linkStyle 13 stroke:#9C27B0, stroke-width:2px; % K --> F
-    linkStyle 14 stroke:#9C27B0, stroke-width:2px; % H -- "Синхронизация Настроек/Списков" --> L
-    linkStyle 15 stroke:#9C27B0, stroke-width:2px; % L --> G
+    linkStyle 0 stroke:#4A90E2, stroke-width:2px;
+    linkStyle 1 stroke:#4A90E2, stroke-width:2px;
+    linkStyle 2 stroke:#4A90E2, stroke-width:2px;
+    linkStyle 3 stroke:#00BCD4, stroke-width:2px;
+    linkStyle 4 stroke:#00BCD4, stroke-width:2px;
+    linkStyle 5 stroke:#4A90E2, stroke-width:2px;
+    linkStyle 6 stroke:#4A90E2, stroke-width:2px;
+    linkStyle 7 stroke:#4A90E2, stroke-width:2px;
+    linkStyle 8 stroke:#4A90E2, stroke-width:2px;
+    linkStyle 9 stroke:#4A90E2, stroke-width:2px;
+    linkStyle 10 stroke:#9C27B0, stroke-width:2px;
+    linkStyle 11 stroke:#9C27B0, stroke-width:2px;
+    linkStyle 12 stroke:#9C27B0, stroke-width:2px;
+    linkStyle 13 stroke:#9C27B0, stroke-width:2px;
+    linkStyle 14 stroke:#9C27B0, stroke-width:2px;
+    linkStyle 15 stroke:#9C27B0, stroke-width:2px;
