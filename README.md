@@ -103,15 +103,19 @@ graph TD
     end
 
     subgraph "Облачные Сервисы (Опционально, с Согласия Пользователя)"
-        E -- "<b>Анонимизированные/Агрегированные Данные</b>" --> J[<b>Облачное Обучение Общих Моделей AI</b>]
+        J[<b>Облачное Обучение Общих Моделей AI</b>]
+        K[<b>Внешние AI API:</b> OpenAI GPT, Google Gemini]
+        L[<b>Облачное Хранилище Настроек:</b> PostgreSQL/MongoDB]
+
+        E -- "<b>Анонимизированные/Агрегированные Данные</b>" --> J
         J --> E
-        H -- "<b>Синхронизация Настроек/Запросы к Продвинутым API</b>" --> K[<b>Внешние AI API:</b> OpenAI GPT, Google Gemini]
+        H -- "<b>Синхронизация Настроек/Запросы к Продвинутым API</b>" --> K
         K --> F
-        H -- "<b>Синхронизация Настроек/Списков</b>" --> L[<b>Облачное Хранилище Настроек:</b> PostgreSQL/MongoDB]
+        H -- "<b>Синхронизация Настроек/Списков</b>" --> L
         L --> G
     end
 
-    %% "Конфетный" стиль v3 (с жирным текстом и улучшенной интеграцией)
+    %% "Конфетный" стиль v4 (без стилизации подграфов)
     classDef userDeviceNodes fill:#F0F8FF, stroke:#4A90E2, stroke-width:2px, color:#212121, rx:8px, ry:8px;
     classDef aiModules fill:#E0F7FA, stroke:#00BCD4, stroke-width:2px, color:#212121, rx:8px, ry:8px;
     classDef storageNodes fill:#FFFDE7, stroke:#FFC107, stroke-width:2px, color:#212121, rx:8px, ry:8px;
@@ -145,10 +149,3 @@ graph TD
     linkStyle 13 stroke:#9C27B0, stroke-width:2px;
     linkStyle 14 stroke:#9C27B0, stroke-width:2px;
     linkStyle 15 stroke:#9C27B0, stroke-width:2px;
-
-    %% Стилизация подграфов для лучшей интеграции
-    %% Mermaid по умолчанию рисует подграфы как отдельные коробки,
-    %% но можно попробовать сделать их обводку тоньше или прозрачнее,
-    %% чтобы они не выглядели так отчужденно.
-    style Устройство Пользователя stroke:#4A90E2, stroke-width:1px, fill:transparent;
-    style Облачные Сервисы (Опционально, с Согласия Пользователя) stroke:#9C27B0, stroke-width:1px, fill:transparent;
