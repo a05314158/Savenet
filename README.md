@@ -86,6 +86,8 @@ Savenet будет иметь модульную архитектуру, поз�
 ## 🔄 Информационный Поток и Взаимодействие с AI
 
 Ниже представлена схема, иллюстрирующая полный информационный поток в Savenet, включая взаимодействие с модулями искусственного интеллекта.
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
 
 ```mermaid
 graph TD
