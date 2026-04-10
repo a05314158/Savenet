@@ -89,6 +89,11 @@ Savenet будет иметь модульную архитектуру, поз�
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
 
+
+.\venv\Scripts\activate
+celery -A app.socketio.celery_app worker --loglevel=info
+
+
 ```mermaid
 graph TD
     %% 1. Определения стилей
